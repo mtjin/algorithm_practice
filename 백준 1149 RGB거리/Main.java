@@ -5,14 +5,14 @@ class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
-        int[] R = new int[N + 1]; //2차원배열 RGB
+        int[] R = new int[N + 1];
         int[] G = new int[N + 1];
         int[] B = new int[N + 1];
 
         for (int i = 1; i <= N; i++) {
-            R[i] = sc.nextInt(); //R
-            G[i] = sc.nextInt(); //G
-            B[i] = sc.nextInt(); //B
+            R[i] = sc.nextInt();
+            G[i] = sc.nextInt();
+            B[i] = sc.nextInt();
         }
         for (int i = 1; i < N; i++) {
             R[i + 1] += Math.min(G[i], B[i]);
