@@ -5,15 +5,15 @@ class Main {
     static int N;
 
     /*
-     *  int map[열인덱스(col)] = 행인덱스(row)
+     *  int map[행인덱스(row)] = 열인덱스(col)
      * */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
         // 첫번째 행 1...N열 차례대로 퀸 놓고 다음 행 호출
-        for (int row = 1; row <= N; row++) {
+        for (int col = 1; col <= N; col++) {
             int[] map = new int[N + 1];
-            map[1] = row;
+            map[1] = col;
             dfs(map, 1);
         }
         System.out.println(result);
@@ -26,7 +26,7 @@ class Main {
             for (int col = 1; col <= N; col++) {
                 map[row + 1] = col;
                 if (check(map, row + 1)) {
-                    // 놓을 수 있는 경우 다음 행 검사
+                    // 놓을 수 있는 경우 다음 행 재귀
                     dfs(map, row + 1);
                 }
             }
