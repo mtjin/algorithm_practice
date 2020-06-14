@@ -1,0 +1,46 @@
+import java.util.*;
+
+class Solution {
+    public int minDays(int[] bloomDay, int m, int k) {
+        int day = -1;
+        boolean[] isBloomed = new boolean[bloomDay.length];
+        TreeSet<Integer> set = new <Integer>TreeSet();
+        for (int i: bloomDay){
+            set.add(i);
+        }
+        day = set.pollFirst();
+        if(m*k > bloomDay.length){
+            return -1;
+        }
+        while (true) {
+            for (int i = 0; i < bloomDay.length; i++) {
+                if (day == bloomDay[i]) {
+                    isBloomed[i] = true;
+                }
+            }
+            int cnt = 0;
+            int bonquetSize = m;
+            for (int i = 0; i < isBloomed.length; i++) {
+                if (isBloomed[i]) {
+                    cnt++;
+                    if (cnt >= k) {
+                        bonquetSize--;
+                        cnt=0;
+                    }
+                } else {
+                    cnt = 0;
+                }
+                if(i == isBloomed.length-1){
+                    if(bonquetSize <= 0){
+                        return day;
+                    }
+                }
+            }
+            if(set.isEmpty()){
+                return -1;
+            }
+            day = set.pollFirst();
+            
+        }
+    }
+}

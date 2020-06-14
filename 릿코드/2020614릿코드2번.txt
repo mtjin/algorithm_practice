@@ -1,0 +1,28 @@
+import java.util.*;
+
+class Solution {
+    public int findLeastNumOfUniqueInts(int[] arr, int k) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+        }
+        List<Integer> keyList = new ArrayList<>(map.keySet());
+        Collections.sort(keyList, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return map.get(o1).compareTo(map.get(o2));
+            }
+        });
+        for (int i = 0; i < k; i++) {
+            int key = keyList.get(0);
+            int value = map.get(key);
+            if (value == 1) {
+                map.remove(key);
+                keyList.remove(0);
+            } else {
+                map.put(key, value - 1);
+            }
+        }
+        return map.keySet().size();
+    }
+}
