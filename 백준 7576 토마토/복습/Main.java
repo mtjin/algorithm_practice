@@ -67,15 +67,7 @@ public class Main {
                 int x2 = point.x + dx[i];
                 int y2 = point.y + dy[i];
                 if (map[x2][y2] == 0) {
-                    if (i == 0) { //왼쪽으로 이동한 상태
-                        map[x2][y2] = map[x2 + 1][y2] + 1;
-                    } else if (i == 1) {//상단으로 이동한 상태
-                        map[x2][y2] = map[x2][y2 + 1] + 1;
-                    } else if (i == 2) {//오른쪽으로 이동한 상태
-                        map[x2][y2] = map[x2 - 1][y2] + 1;
-                    } else {//밑으로 이동한 상태
-                        map[x2][y2] = map[x2][y2 - 1] + 1;
-                    }
+                    map[x2][y2] = map[point.x][point.y] + 1;
                     resultTreeSet.add(map[x2][y2]);
                     queue.offer(new Point(x2, y2));
                 }
