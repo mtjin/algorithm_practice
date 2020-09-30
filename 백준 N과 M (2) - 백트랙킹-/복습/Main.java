@@ -21,20 +21,20 @@ public class Main {
                 System.out.print(num[i] + " ");
             }
             System.out.println();
-        } else {
-            for (int i = 1; i <= n; i++) {
-                if (isVisited[current]) {
-                    continue;
-                }
-                if (prevNum >= i) {
-                    continue;
-                }
-                isVisited[current] = true;
-                num[current] = i;
-                prevNum = i;
-                dfs(current + 1, prevNum);
-                isVisited[current] = false;
+            return;
+        }
+        for (int i = 1; i <= n; i++) {
+            if (isVisited[current]) {
+                continue;
             }
+            if (prevNum >= i) {
+                continue;
+            }
+            isVisited[current] = true;
+            num[current] = i;
+            prevNum = i;
+            dfs(current + 1, prevNum);
+            isVisited[current] = false;
         }
     }
 }

@@ -1,6 +1,5 @@
 import java.util.*
 
-
 internal var isVisited: BooleanArray? = null
 internal var num: IntArray? = null
 internal var n: Int = 0
@@ -21,21 +20,20 @@ internal fun dfs(current: Int, prevNum: Int) {
         for (i in 1..m) {
             print(num!![i].toString() + " ")
         }
-        println("")
-    } else {
-        for (i in 1..n) {
-            if (isVisited!![current]) {
-                continue
-            }
-            if (prevNum >= i) {
-                continue
-            }
-            isVisited!![current] = true
-            num!![current] = i
-            prevNum = i
-            dfs(current + 1, prevNum)
-            isVisited!![current] = false
+        println()
+        return
+    }
+    for (i in 1..n) {
+        if (isVisited!![current]) {
+            continue
         }
+        if (prevNum >= i) {
+            continue
+        }
+        isVisited!![current] = true
+        num?.set(current, i)
+        prevNum = i
+        dfs(current + 1, prevNum)
+        isVisited!![current] = false
     }
 }
-
