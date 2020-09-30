@@ -6,6 +6,7 @@ internal var n: Int = 0
 internal var m: Int = 0
 internal var sb = StringBuilder()
 
+
 fun main(args: Array<String>) {
     val sc = Scanner(System.`in`)
     n = sc.nextInt()
@@ -19,13 +20,13 @@ fun main(args: Array<String>) {
 internal fun dfs(current: Int) {
     if (current > m) {
         for (i in 1..m) {
-            sb.append(num?.get(i)).append(" ")
+            sb.append(num!![i]).append(" ")
         }
         sb.append("\n")
-    } else {
-        for (i in 1..n) {
-            num?.set(current, i)
-            dfs(current + 1)
-        }
+        return
+    }
+    for (i in 1..n) {
+        num!![current] = i
+        dfs(current + 1)
     }
 }

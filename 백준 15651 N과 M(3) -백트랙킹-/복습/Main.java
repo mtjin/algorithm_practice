@@ -23,11 +23,11 @@ public class Main {
                 sb.append(num[i]).append(" ");
             }
             sb.append("\n");
-        } else {
-            for (int i = 1; i <= n; i++) {
-                num[current] = i;
-                dfs(current + 1);
-            }
+            return;
+        }
+        for (int i = 1; i <= n; i++) {
+            num[current] = i;
+            dfs(current + 1);
         }
     }
 }
