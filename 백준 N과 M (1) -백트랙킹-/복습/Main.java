@@ -22,16 +22,16 @@ public class Main {
                 System.out.print(num[i] + " ");
             }
             System.out.println();
-        } else {
-            for (int i = 1; i <= N; i++) {
-                if (isVisited[i]) {
-                    continue;
-                }
-                isVisited[i] = true;
-                num[current] = i;
-                dfs(current + 1);
-                isVisited[i] = false;
+            return;
+        }
+        for (int i = 1; i <= N; i++) {
+            if (isVisited[i]) {
+                continue;
             }
+            isVisited[i] = true;
+            num[current] = i;
+            dfs(current + 1);
+            isVisited[i] = false;
         }
     }
 
